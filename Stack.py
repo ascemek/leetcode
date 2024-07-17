@@ -2,6 +2,7 @@
 
 # Date Log: 07/12/24
 # Link: https://leetcode.com/problems/valid-parentheses/
+# Difficulty: Easy
 
 # 20. Valid Paranthese 
 
