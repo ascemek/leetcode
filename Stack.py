@@ -3,6 +3,7 @@
 # Date Log: 07/12/24
 # Link: https://leetcode.com/problems/valid-parentheses/
 # Difficulty: Easy
+# Qnumber = 20
 
 # 20. Valid Paranthese 
 

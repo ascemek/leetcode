@@ -3,6 +3,7 @@
 # Date Log: 07/14/24
 # Link: https://leetcode.com/problems/binary-search/
 # Difficulty: Easy
+# Qnumber = 704
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:

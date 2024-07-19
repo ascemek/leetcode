@@ -3,6 +3,7 @@
 # Date Log: 07/14/24
 # Link: https://leetcode.com/problems/valid-palindrome/description/
 # Difficulty: Easy
+# Qnumber = 125
 
 class Solution:
     def isPalindrome(self, s: str) -> bool:
