@@ -41,3 +41,11 @@ class Solution:
                 ord("0") <= ord(char) <= ord("9"))
         
 #___________________________________________________________________________
+
+# Date Log: 07/26/24
+# Link: https://leetcode.com/problems/3sum/description/
+# Difficulty: Medium
+# Qnumber = 15
+
+
+#___________________________________________________________________________
