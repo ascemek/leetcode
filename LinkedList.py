@@ -62,3 +62,10 @@ class Solution:
         return False
 
 #___________________________________________________________________________
+
+# Date Log: 08/02/24
+# Link: https://leetcode.com/problems/linked-list-cycle/description/
+# Difficulty: Easy
+# Qnumber = 141
+
+#___________________________________________________________________________

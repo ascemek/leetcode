@@ -78,9 +78,6 @@ class Solution:
             level += 1
         return level
 
-
-
-
 #___________________________________________________________________________
 
 # Date Log: 07/22/24
@@ -88,4 +85,67 @@ class Solution:
 # Difficulty: Easy
 # Qnumber = 110
 
+#___________________________________________________________________________
+
+# Date Log: 08/04/24
+# Link: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/description/
+# Difficulty: Medium
+# Qnumber = 235
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        
+        cur = root
+        
+        while cur:
+            if p.val > cur.val and q.val > cur.val:
+                cur = cur.right
+            elif p.val < cur.val and q.val < cur.val:
+                cur = cur.left
+            else:
+                return cur
+#___________________________________________________________________________
+
+# Date Log: 08/04/24
+# Link: https://leetcode.com/problems/binary-tree-level-order-traversal/
+# Difficulty: Medium
+# Qnumber = 102
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        
+        # Time complexity: O(N) Space complexity: O(N)
+        
+        res = []
+        q = collections.deque()
+        q.append(root)
+        
+        while q:
+            qLen = len(q)
+            level = []
+            
+            for i in range(qLen):
+                node = q.popleft()
+                if node:
+                    level.append(node.val)
+                    q.append(node.left)
+                    q.append(node.right)
+                if level:
+                    res.append(level)
+        return res
+            
 #___________________________________________________________________________
