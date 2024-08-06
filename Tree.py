@@ -149,3 +149,34 @@ class Solution:
         return res
             
 #___________________________________________________________________________
+
+# Date Log: 08/05/24
+# Link: https://leetcode.com/problems/validate-binary-search-tree/description/
+# Difficulty: Medium
+# Qnumber = 98
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        
+        # Time Complexity: O(N)
+        
+        # recursive
+        
+        def valid(node, leftBoundary, rightBoundary):
+            if not node:
+                return True
+            if not (leftBoundary < node.val) and (rightBoundary > node.val):
+                return False
+            return (valid(node.left, leftBoundary, node.val) and valid(node.right, node.val, rightBoundary))
+        
+        return valid(root, float("-inf"), float("inf"))
+    
+#___________________________________________________________________________
+
+

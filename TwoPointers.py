@@ -49,3 +49,50 @@ class Solution:
 
 
 #___________________________________________________________________________
+
+# Date Log: 08/05/24
+# Link: https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
+# Difficulty: Medium
+# Qnumber = 167
+
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        
+        # Time complexity: O(N) with no extra space
+        
+        l, r = 0, len(numbers) - 1
+        
+        while l < r:
+            if numbers[l] + numbers[r] > target:
+                r -= 1
+            elif numbers[l] + numbers[r] < target:
+                l += 1
+            else:
+                return [l+1, r+1]
+
+#___________________________________________________________________________
+
+# Date Log: 08/05/24
+# Link: https://leetcode.com/problems/container-with-most-water/description/
+# Difficulty: Medium
+# Qnumber = 11
+
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        
+        res = 0
+        l, r = 0, len(height) - 1
+        
+        while l < r:
+            
+            area = (r - l) * min(height[r], height[l])
+            res = max(res, area)
+            
+            if height[l] < height[r]:
+                l += 1
+            else:
+                r -= 1
+                
+        return res
+
+#___________________________________________________________________________
