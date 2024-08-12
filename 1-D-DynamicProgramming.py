@@ -17,4 +17,22 @@ class Solution:
             n2 = temp
         return n2
     
-    #___________________________________________________________________________
+#___________________________________________________________________________
+    
+# Date Log: 08/11/24
+# Link: https://leetcode.com/problems/house-robber/description/
+# Difficulty: Medium
+# Qnumber = 198
+
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        
+        rob1, rob2 = 0, 0
+
+        for n in nums:
+            temp = max(n + rob1, rob2)
+            rob1 = rob2
+            rob2 = temp
+        return rob2
+
+#___________________________________________________________________________
