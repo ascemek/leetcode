@@ -81,6 +81,66 @@ for index, number in enumarate(nums):
     
 
 #___________________________________________________________________________
+
+# Date Log: 08/13/24
+# Link: https://leetcode.com/problems/longest-consecutive-sequence/description/
+# Difficulty: Medium
+# Qnumber = 128
+
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        
+        numSet = set(nums)
+        longest = 0
+        
+        for num in nums:
+            if (num - 1) in numSet:
+                continue
+            
+            currLongest = 0
+            
+            while num in numSet:
+                currLongest += 1
+                numSet.remove(num)
+                num += 1
+                
+            longest = max(longest, currLongest)
+                
+        return longest
+
+#___________________________________________________________________________
+
+# Date Log: 08/13/24
+# Link: https://leetcode.com/problems/valid-sudoku/
+# Difficulty: Medium
+# Qnumber = 36
+
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        
+        # Time and Space Complexity: O(N^2)
+        
+        rows = collections.defaultdict(set)
+        cols = collections.defaultdict(set)
+        squares = collections.defaultdict(set)
+        
+        for r in range(9):
+            for c in range(9):
+                
+                if board[r][c] == ".":
+                    continue
+                if (board[r][c] in rows[r] or
+                    board[r][c] in cols[c] or
+                    board[r][c] in squares[(r // 3, c // 3)]):
+                    return False
+                
+                rows[r].add(board[r][c])
+                cols[c].add(board[r][c])
+                squares[(r // 3, c // 3)].add(board[r][c])
+                
+        return True
+#___________________________________________________________________________
+
         
 
         
