@@ -62,3 +62,35 @@ class Solution:
     return False
             
 #___________________________________________________________________________
+
+# Date Log: 08/19/24
+# Link: https://leetcode.com/problems/subsets/description/
+# Difficulty: Medium
+# Qnumber = 78
+
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        
+        # Time Complexity: O(n * 2^n) because there are 2^n subsets we can make
+        
+        res = []
+        subset = []
+        
+        def dfs(i):
+            if i >= len(nums):
+                res.append(nums[i])
+                return
+
+            # decision to include nums[i]
+            subset.append(nums[i])
+            dfs(i + 1)
+            
+            # decision to NOT include nums[i]
+            subset.pop()
+            dfs(i + 1)
+            
+        dfs(0)
+        
+        return res
+    
+#___________________________________________________________________________

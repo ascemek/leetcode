@@ -305,3 +305,102 @@ class Solution:
 
 #___________________________________________________________________________
 
+# Date Log: 08/18/24
+# Link: https://leetcode.com/problems/count-good-nodes-in-binary-tree/description/
+# Difficulty: Medium
+# Qnumber = 1448
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def goodNodes(self, root: TreeNode) -> int:
+        
+        # Time Complexity: O(N), Space Complexity: O(N) -lenght of the tree-
+        
+        def dfs(node, maxVal):
+            if not node:
+                return 0
+            
+            res = 1 if node.val >= maxVal else 0
+            maxVal = max(maxVal, node.val)
+            res += dfs(root.left, maxVal)
+            res += dfs(root.right, maxVal)
+            
+            return res
+        
+        return dfs(root, root.val)
+
+#___________________________________________________________________________
+
+# Date Log: 08/18/24
+# Link: https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/
+# Difficulty: Medium
+# Qnumber = 230
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+        
+        # Iterative stack solution
+        
+        visited = 0
+        stack = []
+        cur = root
+        
+        while cur or stack:
+            while cur:
+                stack.append(cur)
+                cur = cur.left
+                
+            cur = stack.pop()
+            visited += 1
+            if visited == k:
+                return cur.val
+            
+            cur = cur.right
+             
+#___________________________________________________________________________
+
+# Date Log: 08/18/24
+# Link: https://leetcode.com/problems/subtree-of-another-tree/
+# Difficulty: Easy
+# Qnumber = 572
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
+        
+        if not subRoot:
+            return True
+        if not root:
+            return False
+        
+        if self.sameTree(root, subRoot):
+            return True
+        
+        return (self.isSubTree(root.left, subRoot) or self.isSubTree(root.right, subRoot))
+        
+    def sameTree(self, root, subRoot):
+        
+        if not root and not subRoot:
+            return True
+        if root and subRoot and root.val == subRoot.val:
+            return (self.sameTree(root.left, subRoot.left) and self.sameTree(root.right, subRoot.right))
+        return False
+        
+#___________________________________________________________________________
+
