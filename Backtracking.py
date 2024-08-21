@@ -94,3 +94,50 @@ class Solution:
         return res
     
 #___________________________________________________________________________
+
+# Date Log: 08/19/24
+# Link: https://leetcode.com/problems/subsets-ii//description/
+# Difficulty: Medium
+# Qnumber = 90
+
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+
+#___________________________________________________________________________
+
+# Date Log: 08/20/24
+# Link: https://leetcode.com/problems/permutations/description/
+# Difficulty: Medium
+# Qnumber = 46
+
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        
+        # Time Complexity: n! * n^2
+        # Space Complexity: n! * n
+        
+        perms = [[]]
+        
+        for n in nums:
+            new_perms = []
+            for p in perms:
+                for i in range(len(p) + 1):
+                    p_copy = p.copy()
+                    new_perms.insert(i, n)
+                    new_perms.append(p_copy)
+            perms = new_perms
+        return perms
+        
+#___________________________________________________________________________
+
+# Date Log: 08/20/24
+# Link: https://leetcode.com/problems/combination-sum-ii/
+# Difficulty: Medium
+# Qnumber = 40
+
+class Solution:
+    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        
+        
+        
+#___________________________________________________________________________
