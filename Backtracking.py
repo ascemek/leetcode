@@ -138,6 +138,45 @@ class Solution:
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
         
+        # Time Complexity: O(2^n) * O(n) --> 
+        # 2^n because we make a choice include or not include and the second part (* n)
+        # is because we copy the elemeets to the res
+        # Space Complexity: O(N)
         
+        res = []
+        candidates.sort()
+        
+        def dfs(i, curCombination, totalSum):
+        
+            if totalSum == target:
+                res.append(curCombinaton.copy())
+                return
+                
+            if totalSum > target or i == len(candidates):
+                return
+            
+            # include candidates[i]
+            curCombination.append(candidates[i])
+            dfs(i + 1, curCombinaton, totalSum + candidates[i])
+            curCombination.pop()
+            
+            # NOT include candidates[i]
+            while i + 1 < len(candidates) and candidates[i] == candidates[i + 1]:
+                i += 1
+            dfs(i + 1, curCombination, totalSum)
+            
+        dfs(0, [], 0)
+        
+        return res
+    
+#___________________________________________________________________________
+
+# Date Log: 08/21/24
+# Link: https://leetcode.com/problems/combination-sum-ii/
+# Difficulty: Medium
+# Qnumber = 131
+
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
         
 #___________________________________________________________________________
