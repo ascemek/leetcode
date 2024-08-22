@@ -179,4 +179,62 @@ class Solution:
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
         
+        res = []
+        curPartion =  []
+        
+        def dfs(i):
+            if i == len(s):
+                res.append(curPartion.copy())
+                return
+            
+            for j in range(i, len(s)):
+                if self.isPalindrome(s, i, j):
+                    curPartion.append(s[i:j+1])
+                    dfs(j + 1)
+                    curPartion.pop()
+                    
+        dfs(0)
+        return res
+    
+    def isPalindrome(self, s, l, r):
+        while l < r:
+            if s[l] != s[r]:
+                return False
+            l, r = l + 1, r - 1
+        return True
+        
+#___________________________________________________________________________
+
+# Date Log: 08/22/24
+# Link: https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/
+# Difficulty: Medium
+# Qnumber = 17
+
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        
+        res = []
+        digitToChar = { "2": "abc",
+                        "3": "def",
+                        "4": "ghi",
+                        "5": "jkl",
+                        "6": "mno",
+                        "7": "pqrs",
+                        "8": "tuv",
+                        "9": "wxyz" }
+        
+        def backtrack(i, curStr):
+            
+            if len(curStr) == len(digits):
+                res.append(curStr)
+                return
+            
+            for c in digitToChar[digits[i]]:
+                backtrack(i + 1, curStr + c)
+                
+        if digits:
+            backtrack(0, "")
+            
+        return res
+
 #___________________________________________________________________________

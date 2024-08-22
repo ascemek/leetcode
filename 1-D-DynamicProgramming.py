@@ -112,3 +112,34 @@ class Solution:
     return max(dfs(root))
 
 #___________________________________________________________________________
+
+# Date Log: 08/22/24
+# Link: https://leetcode.com/problems/longest-palindromic-substring/description/
+# Difficulty: Medium
+# Qnumber = 5
+
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        
+        res = ""
+        resLen = 0
+        
+        def isPalindrome(l, r):
+            nonlocal res, resLen
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                curPalLen = l - r + 1
+                if curPalLen > resLen:
+                    res = s[l:r+1]
+                    resLen = curPalLen
+                l, r = l - 1, r + 1
+        
+        for i in range(len(s)):
+            # odd length s
+            isPalindrome(i, i)
+            
+            # even length s
+            isPalindrome(i, i + 1)
+            
+        return res
+        
+#___________________________________________________________________________
