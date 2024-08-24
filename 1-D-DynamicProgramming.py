@@ -143,3 +143,42 @@ class Solution:
         return res
         
 #___________________________________________________________________________
+
+# Date Log: 08/23/24
+# Link: https://leetcode.com/problems/palindromic-substrings/description/
+# Difficulty: Medium
+# Qnumber = 647
+
+class Solution:
+    def countSubstrings(self, s: str) -> int:
+        
+        # Time Complexity: O(N^2)
+        
+        res = 0
+        
+        for i in range(len(s)):
+            # odd length substring
+            res += self.countPali(s, i, i)
+            # even length substring
+            res += self.countPali(s, i, i + 1)
+        return res
+    
+    def countPali(self, s, l, r):
+        res = 0
+        while l >= 0 and r < len(s) and s[l] == s[r]:
+            res += 1
+            l, r = l - 1, r + 1
+        return res
+        
+#___________________________________________________________________________
+
+# Date Log: 08/23/24
+# Link: https://leetcode.com/problems/decode-ways/description/
+# Difficulty: Medium
+# Qnumber = 91
+
+class Solution:
+    def numDecodings(self, s: str) -> int:
+        
+
+#___________________________________________________________________________
