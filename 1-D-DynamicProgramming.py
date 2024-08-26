@@ -180,5 +180,46 @@ class Solution:
 class Solution:
     def numDecodings(self, s: str) -> int:
         
+        # Recursive - O(N) Memory solution
+        
+        dp  = {len(s) : 1}
+        
+        def dfs(i):
+            if i in dp:
+                return dp[i]
+            if s[i] == "0":
+                return 0
+            
+            res = dfs(i + 1)
+            if(i + 1 < len(s) and (s[i] == "1" or
+                s[i] == "2" and s[i + 1] in "0123456")):
+                res += dfs(i + 2)
+            dp[i] = res
+            return res
+        
+        return dfs(0)        
+        
+#___________________________________________________________________________
+
+# Date Log: 08/25/24
+# Link: https://leetcode.com/problems/coin-change/description/
+# Difficulty: Medium
+# Qnumber = 322
+
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        
+        # Time Complexity: O(amount * len(coins))
+        # Memory Complexity: O(amount)
+        
+        dp = [amount + 1] * (amount + 1)
+        dp[0] = 0
+        
+        for amount in range(1, amount + 1):
+            for coin in coins:
+                if amount - coins >= 0:
+                    dp[amount] = min(dp[amount], 1 + dp[amount - coin])
+                    
+        return dp[amount] if dp[amount] != amount + 1 else -1
 
 #___________________________________________________________________________
