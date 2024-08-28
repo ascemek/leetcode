@@ -223,3 +223,14 @@ class Solution:
         return dp[amount] if dp[amount] != amount + 1 else -1
 
 #___________________________________________________________________________
+
+# Date Log: 08/26/24
+# Link: https://leetcode.com/problems/coin-change/description/
+# Difficulty: Medium
+# Qnumber = 139
+
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        
+
+#___________________________________________________________________________
