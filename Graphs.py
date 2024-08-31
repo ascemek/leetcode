@@ -237,3 +237,93 @@ class Solution:
         return res
         
 #___________________________________________________________________________
+
+# Date Log: 08/30/24
+# Link: https://leetcode.com/problems/surrounded-regions/
+# Difficulty: Medium
+# Qnumber = 130
+
+class Solution:
+    def solve(self, board: List[List[str]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        
+        # Time Complexity: O(n * m)
+    
+        rows, cols = len(board), len(board[0])
+    
+        def dfsCapture(r, c):
+            
+            if (r < o or c < 0 or 
+                r >= rows or c >= cols 
+                or board[r][c] != "O"):
+                return
+            board[r][c] = "T"
+            dfsCapture(r + 1, c)
+            dfsCapture(r - 1, c)
+            dfsCapture(r, c + 1)
+            dfsCapture(r, c - 1)
+        
+        for r in range(rows):
+            for c in range(cols):
+                if (board[r][c] == "O" and 
+                    (r in [0, rows - 1] or c in [0, cols - 1])):
+                        dfsCapture(r, c)
+        
+        for r in range(rows):
+            for c in range(cols):
+                if board[r][c] == "O":
+                    board[r][c] = "X"
+                    
+        for r in range(rows):
+            for c in range(cols):
+                if board[r][c] == "T":
+                    board[r][c] = "O"   
+
+#___________________________________________________________________________
+
+# Date Log: 08/30/24
+# Link: https://leetcode.com/problems/course-schedule/description/
+# Difficulty: Medium
+# Qnumber = 207
+
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        
+        # map each course to preReq list
+        preReqMap = { i:[] for i in range(numCourses)}
+        
+        for course, preq in prerequisites:
+            preReqMap[course].append(preReq)
+        
+        #all courses along the curr DFS path  
+        visitedSet = set()
+        def dfs(curCourse):
+            if curCourse in visitedSet:
+                return False
+            if preReq == []:
+                return True
+            
+            visitedSet.add(curCourse)
+            for preReq in preReqMap:
+                if not dfs(curCourse): return False
+            visitedSet.remove(curCourse)
+            preReqMap[curCourse] = []
+            
+        for course in range(numCourses):
+            if not dfs(course): return False
+        return True
+        
+#___________________________________________________________________________
+
+# Date Log: 08/30/24
+# Link: https://leetcode.com/problems/course-schedule-ii/description/
+# Difficulty: Medium
+# Qnumber = 210
+
+class Solution:
+    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        
+
+#___________________________________________________________________________
