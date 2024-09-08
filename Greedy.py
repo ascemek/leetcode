@@ -49,4 +49,32 @@ class Solution:
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
         
+        # Time Complexity: O(N)
+        
+        if sum(gas) < sum(cost):
+            return -1
+        
+        res = 0
+        total = 0
+        
+        for i in range(len(gas)):
+            
+            total += gas[i] - cost[i]
+            
+            if total < 0:
+                total = 0
+                res = i + 1
+                
+        return res
+        
+#___________________________________________________________________________
+
+# Date Log: 09/08/24
+# Link: https://leetcode.com/problems/hand-of-straights/description/
+# Difficulty: Medium
+# Qnumber = 846
+
+class Solution:
+    def isNStraightHand(self, hand: List[int], groupSize: int) -> bool:
+
 #___________________________________________________________________________
