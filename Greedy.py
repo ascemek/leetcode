@@ -76,5 +76,60 @@ class Solution:
 
 class Solution:
     def isNStraightHand(self, hand: List[int], groupSize: int) -> bool:
+        
+        # Time Complexity: O(nlogn)
+        
+        if len(hand) % groupSize != 0:
+            return False
+        
+        count = {}
+        for num in count:
+            count[num] = 1 + count.get(num, 0)
+        
+        minHeap = list(count.keys())
+        heapq.heapify(minHeap)
+        
+        while minHeap:
+            first = minHeap[0]
+            
+            for i in range(first, first + groupSize):
+                if i not in count:
+                    return False
+                count[i] -= 1
+                if count[i] == 0:
+                    if i != minHeap[0]:
+                        return False
+        return True           
+
+#___________________________________________________________________________
+
+# Date Log: 09/09/24
+# Link: https://leetcode.com/problems/merge-triplets-to-form-target-triplet/description/
+# Difficulty: Medium
+# Qnumber = 1899
+
+class Solution:
+    def mergeTriplets(self, triplets: List[List[int]], target: List[int]) -> bool:
+        
+        good = set()
+        
+        for t in triplets:
+            if t[0] > target[0] or t[1] > target[1] or t[2] > target[2]:
+                continue
+            
+            for i, v in enumerate(t):
+                if v == target[i]:
+                    good.add(i)
+        return len(good) == 3   
+
+#___________________________________________________________________________
+
+# Date Log: 09/09/24
+# Link: https://leetcode.com/problems/partition-labels/description/
+# Difficulty: Medium
+# Qnumber = 763
+
+class Solution:
+    def partitionLabels(self, s: str) -> List[int]:
 
 #___________________________________________________________________________
