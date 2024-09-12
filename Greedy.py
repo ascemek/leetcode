@@ -151,8 +151,30 @@ class Solution:
 #___________________________________________________________________________
 
 # Date Log: 09/10/24
-# Link: 
+# Link: https://leetcode.com/problems/valid-parenthesis-string/description/
 # Difficulty: Medium
-# Qnumber = 
+# Qnumber = 678
+
+class Solution:
+    def checkValidString(self, s: str) -> bool:
+        
+        # Time Complexity: O(N)
+        
+        leftMax, leftMin = 0, 0
+        
+        for char in s:
+            if char == "(":
+                leftMax, leftMin = leftMax + 1, leftMin + 1
+            elif char == ")":
+                leftMax, leftMin = leftMax - 1, leftMin - 1
+            else:
+                leftMax, leftMin = leftMax + 1, leftMin - 1
+        
+            if leftMax < 0:
+                return False
+            if leftMin < 0:
+                leftMin = 0
+        
+        return leftMin == 0
 
 #___________________________________________________________________________
