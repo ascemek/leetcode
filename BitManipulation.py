@@ -62,9 +62,30 @@ class Solution:
 
 #___________________________________________________________________________
 
-# Date Log: 09/12/24
-# Link: 
+# Date Log: 09/14/24
+# Link: https://leetcode.com/problems/reverse-bits/description/
+# Difficulty: Easy
+# Qnumber = 190
+
+class Solution:
+    def reverseBits(self, n: int) -> int:
+        
+        res = 0
+        
+        for i in range(32):
+            bit = (n >> i) & 1
+            res = res | (bit << (31 - i))
+        return res
+
+#___________________________________________________________________________
+
+# Date Log: 09/16/24
+# Link: https://leetcode.com/problems/missing-number/description/
 # Difficulty: 
-# Qnumber = 
+# Qnumber = 268
+
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        
 
 #___________________________________________________________________________
