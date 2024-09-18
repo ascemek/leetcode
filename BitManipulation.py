@@ -87,7 +87,7 @@ class Solution:
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
         
-       return sum() 
+       return sum(range(0, len(nums))) - sum() 
         
 
 #___________________________________________________________________________
