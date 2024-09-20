@@ -87,14 +87,26 @@ class Solution:
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
         
-       return sum(range(0, len(nums))) - sum() 
+        # Time Complexity: O(N)
+        # Space Complexity: O(1)
         
-
+       res = len(nums)
+       
+       for i in range(len(nums)):
+           res ^= nums[i] ^ i
+        return res
+        
 #___________________________________________________________________________
 
 # Date Log: 09/20/2024
-# Link: 
-# Difficulty: 
-# Qnumber = 
+# Link: https://leetcode.com/problems/sum-of-two-integers/description/
+# Difficulty: Medium
+# Qnumber = 371
+
+class Solution:
+    def getSum(self, a: int, b: int) -> int:
+        
+        
+        
 
 #___________________________________________________________________________
